@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".MainActivity"
+    android:id="@+id/mainLayout">
+    <!--Avatar layout-->
+    <RelativeLayout
+        android:id="@+id/avatarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/primary"
+        android:windowSoftInputMode="adjustResize">
+        <!--Ava Lt// Name-->
+        <TextView
+            android:id="@+id/Name"
+            android:text="Вася Иванов"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/avatar"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <!--Ava Lt// Back To Menu-->
+        <ImageButton
+            android:id="@+id/btnBackToMenu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:background="@color/primary"
+            app:srcCompat="@android:drawable/ic_menu_revert" />
+        <!--Ava Lt// Avatar-->
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:layout_toEndOf="@+id/btnBackToMenu"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/padding"
+            tools:srcCompat="@drawable/ic_launcher_foreground" />
+    </RelativeLayout>
+    <!--Message layout-->
+    <RelativeLayout
+        android:id="@+id/messageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/primary">
+        <!--Msg Lt// Send-->
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/padding"
+            app:srcCompat="@android:drawable/ic_menu_send" />
+        <!--Msg Lt// Message-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/btnSend"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/padding"
+            android:layout_marginBottom="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/message"
+                android:hint="Сообщение"
+                android:overScrollMode="always"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/btnAdd"
+                android:layout_alignParentBottom="true"
+                android:layout_toStartOf="@+id/btnAdd"
+                android:layout_toEndOf="@+id/btnEmoji"
+                android:inputType="textMultiLine" />
+            <!--Msg Lt// Add-->
+            <ImageButton
+                android:id="@+id/btnAdd"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alpha"
+                app:srcCompat="@android:drawable/ic_menu_add" />
+            <!--Msg Lt// Emoji-->
+            <ImageButton
+                android:id="@+id/btnEmoji"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alpha"
+                app:srcCompat="@android:drawable/ic_menu_rotate" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--Chat layout-->
+    <RelativeLayout
+        android:id="@+id/chatLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/messageLayout"
+        android:layout_below="@+id/avatarLayout"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/avatarLayout"></RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Start</string>
+    <string name="message">Message</string>
+    <string name="hello_bubbletextvew">Hello BubbleTextVew</string>
+</resources>
