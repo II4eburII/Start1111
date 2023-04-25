@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView Name;
     private EditText Message;
     private BubbleTextView BublTXT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +41,17 @@ public class MainActivity extends AppCompatActivity {
         Name = findViewById(R.id.name);
         Message = findViewById(R.id.message);
         BublTXT = findViewById(R.id.BublTXT);
+        RelativeLayout.LayoutParams imageViewLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        BublTXT.setLayoutParams(imageViewLayoutParams);
+        chatLL.addView(findViewById(R.id.BublTXT));
+
         btnSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getApplicationContext(), Message.getText(), Toast.LENGTH_SHORT);
                 toast.show();
-                BublTXT.setText(Message.getText());
-                chatLL.addView(BublTXT); // не здесь
+                setContentView(R.layout.bubble_message_item);
+                //BublTXT.setText(Message.getText());
+                //chatLL.addView(BublTXT); // не здесь
             }
         });
     }
