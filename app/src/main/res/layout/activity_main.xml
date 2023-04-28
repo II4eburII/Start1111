@@ -128,7 +128,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="7"
-                android:id="@+id/recyclerView"/>
+                android:id="@+id/recyclerView"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
         </RelativeLayout>
     </RelativeLayout>
 </layout>

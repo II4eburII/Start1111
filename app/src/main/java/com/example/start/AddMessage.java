@@ -23,6 +23,7 @@ public class AddMessage extends RecyclerView.Adapter<AddMessage.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v  = inflater.inflate(R.layout.bubble_message_item,parent,false);
         BubbleMessageItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.bubble_message_item, parent, false);
         return new ViewHolder(binding);
     }

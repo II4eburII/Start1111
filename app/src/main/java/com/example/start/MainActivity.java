@@ -3,6 +3,7 @@ package com.example.start;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.annotation.SuppressLint;
 import android.os.Message;
 import android.widget.Button;
 import android.os.Bundle;
@@ -58,20 +59,17 @@ public class MainActivity extends AppCompatActivity {
         BublTXT = findViewById(R.id.BublTXT);
 
         ArrayList<com.example.start.Message> messages = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
-            messages.add(new com.example.start.Message("Lev", "hi", 10));
-            messages.add(new com.example.start.Message("Lev", "hi", 10));
-            messages.add(new com.example.start.Message("Veronika", "hi", 10));
-        }
+
 
         binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         binding.recyclerView.setAdapter(new AddMessage(messages));
         btnSend.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getApplicationContext(), msg.getText(), Toast.LENGTH_SHORT);
                 toast.show();
-                //BublTXT.setText(Message.getText());
-                //chatLL.addView(BublTXT); // не здесь
+                messages.add(new com.example.start.Message("Марк", msg.getText().toString(), 10));
+                //AddMessage admsg = new AddMessage(new Arraylist(messages));
             }
         });
     }
