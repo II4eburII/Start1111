@@ -2,6 +2,8 @@ package com.example.start;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+
+import android.os.Message;
 import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,43 +15,61 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.start.databinding.ActivityMainBinding;
 import com.github.library.bubbleview.BubbleTextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
+
     private RelativeLayout chatLL;  // не здесь
     private ImageButton btnSend;
     private ImageButton btnEmoji;
     private ImageButton btnBackToMenu;
     private ImageButton btnAdd;
     private TextView Name;
-    private EditText Message;
+    private EditText msg;
     private BubbleTextView BublTXT;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        //
         //Лэйауты
-        chatLL = findViewById(R.id.chatLayout); // не здесь
+        //
+        chatLL = findViewById(R.id.chatLayout);
+        //
         //Кнопки
+        //
         btnSend = findViewById(R.id.btnSend);
         btnEmoji = findViewById(R.id.btnEmoji);
         btnBackToMenu = findViewById(R.id.btnBackToMenu);
         btnAdd = findViewById(R.id.btnAdd);
+        //
         //Вьюшки
+        //
         Name = findViewById(R.id.name);
-        Message = findViewById(R.id.message);
+        msg = findViewById(R.id.message);
         BublTXT = findViewById(R.id.BublTXT);
-        RelativeLayout.LayoutParams imageViewLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        BublTXT.setLayoutParams(imageViewLayoutParams);
-        chatLL.addView(findViewById(R.id.BublTXT));
 
+        ArrayList<com.example.start.Message> messages = new ArrayList<>();
+        for(int i = 0; i < 10; i++){
+            messages.add(new com.example.start.Message("Lev", "hi", 10));
+            messages.add(new com.example.start.Message("Lev", "hi", 10));
+            messages.add(new com.example.start.Message("Veronika", "hi", 10));
+        }
+
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        binding.recyclerView.setAdapter(new AddMessage(messages));
         btnSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), Message.getText(), Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), msg.getText(), Toast.LENGTH_SHORT);
                 toast.show();
-                setContentView(R.layout.bubble_message_item);
                 //BublTXT.setText(Message.getText());
                 //chatLL.addView(BublTXT); // не здесь
             }

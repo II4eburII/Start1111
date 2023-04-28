@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <com.github.library.bubbleview.BubbleTextView
-        android:id="@+id/BublTXT"
-        android:layout_width="wrap_content"
+    <data>
+        <variable
+            name="message"
+            type="com.example.start.Message" />
+    </data>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="hello_bubbletextvew"
-        android:textColor="@android:color/white"
-        app:angle="8dp"
-        app:arrowCenter="false"
-        app:arrowHeight="10dp"
-        app:arrowLocation="right"
-        app:arrowPosition="25dp"
-        app:arrowWidth="8dp"
-        app:bubbleColor="@color/primary" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+        <com.github.library.bubbleview.BubbleTextView
+            android:id="@+id/BublTXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@{message.TXT}"
+            android:textColor="@android:color/white"
+            app:angle="8dp"
+            app:arrowCenter="false"
+            app:arrowHeight="10dp"
+            app:arrowLocation="right"
+            app:arrowPosition="25dp"
+            app:arrowWidth="8dp"
+            app:bubbleColor="@color/primary" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
