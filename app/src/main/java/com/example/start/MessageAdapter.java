@@ -48,8 +48,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
     @SuppressLint("NotifyDataSetChanged")
-    public void AddMessage(ArrayList<MyMessage> msg){
-        this.MyMessage = msg;
+    public void AddMessage(MyMessage msg){
+        this.MyMessage.add(msg);
         notifyDataSetChanged();
     }
 }

@@ -53,14 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<MyMessage> messages = new ArrayList<>();
 
-        MessageAdapter MessageAdapter = new MessageAdapter(messages);
+        MessageAdapter messageAdapter = new MessageAdapter(messages);
         binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        binding.recyclerView.setAdapter(MessageAdapter);
+        binding.recyclerView.setAdapter(messageAdapter);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             public void onClick(View v) {
-                messages.add(new MyMessage("Марк", msg.getText().toString(), 10));
-                MessageAdapter.AddMessage(messages);
+                messageAdapter.AddMessage(new MyMessage("Марк", msg.getText().toString(), 10));
 
             }
         });
