@@ -1,23 +1,19 @@
 package com.example.start;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
-import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.widget.AppCompatImageButton;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.start.databinding.ActivityMainBinding;
 import com.github.library.bubbleview.BubbleTextView;
@@ -34,45 +30,38 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnAdd;
     private TextView Name;
     private EditText msg;
-    private BubbleTextView BublTXT;
-    private int num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        num = 0;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         //
         //Лэйауты
         //
-        chatLL = findViewById(R.id.chatLayout);
+        chatLL = binding.chatLayout;
         //
         //Кнопки
         //
-        btnSend = findViewById(R.id.btnSend);
-        btnEmoji = findViewById(R.id.btnEmoji);
-        btnBackToMenu = findViewById(R.id.btnBackToMenu);
-        btnAdd = findViewById(R.id.btnAdd);
+        btnSend = binding.btnSend;
+        btnEmoji = binding.btnEmoji;
+        btnBackToMenu = binding.btnBackToMenu;
+        btnAdd = binding.btnAdd;
         //
         //Вьюшки
         //
-        Name = findViewById(R.id.name);
-        msg = findViewById(R.id.message);
-        BublTXT = findViewById(R.id.BublTXT);
+        Name = binding.name;
+        msg = binding.message;
 
         ArrayList<MyMessage> messages = new ArrayList<>();
 
-
+        MessageAdapter MessageAdapter = new MessageAdapter(messages);
         binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        binding.recyclerView.setAdapter(new AddMessage(messages));
+        binding.recyclerView.setAdapter(MessageAdapter);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), msg.getText(), Toast.LENGTH_SHORT);
-                toast.show();
                 messages.add(new MyMessage("Марк", msg.getText().toString(), 10));
-                AddMessage admsg = new AddMessage(messages);
-                Log.w("myApp", messages.get(num).getTXT());
-                num++;
+                MessageAdapter.AddMessage(messages);
+
             }
         });
     }

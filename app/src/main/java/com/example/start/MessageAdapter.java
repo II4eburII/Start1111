@@ -1,9 +1,9 @@
 package com.example.start;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,11 +13,11 @@ import com.example.start.databinding.BubbleMessageItemBinding;
 
 import java.util.ArrayList;
 
-public class AddMessage extends RecyclerView.Adapter<AddMessage.ViewHolder> {
+public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
     private ArrayList<MyMessage> MyMessage;
 
-    AddMessage(ArrayList<MyMessage> messages){
+    MessageAdapter(ArrayList<MyMessage> messages){
         this.MyMessage = messages;
     }
 
@@ -46,5 +46,10 @@ public class AddMessage extends RecyclerView.Adapter<AddMessage.ViewHolder> {
         public void bind(MyMessage message){
             binding.setMsg(message);
         }
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    public void AddMessage(ArrayList<MyMessage> msg){
+        this.MyMessage = msg;
+        notifyDataSetChanged();
     }
 }
