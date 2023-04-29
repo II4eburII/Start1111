@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
-import android.os.Message;
 import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView Name;
     private EditText msg;
     private BubbleTextView BublTXT;
+    private int num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        num = 0;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         //
         //Лэйауты
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         msg = findViewById(R.id.message);
         BublTXT = findViewById(R.id.BublTXT);
 
-        ArrayList<com.example.start.Message> messages = new ArrayList<>();
+        ArrayList<MyMessage> messages = new ArrayList<>();
 
 
         binding.recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -68,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast toast = Toast.makeText(getApplicationContext(), msg.getText(), Toast.LENGTH_SHORT);
                 toast.show();
-                messages.add(new com.example.start.Message("Марк", msg.getText().toString(), 10));
-                //AddMessage admsg = new AddMessage(new Arraylist(messages));
+                messages.add(new MyMessage("Марк", msg.getText().toString(), 10));
+                AddMessage admsg = new AddMessage(messages);
+                Log.w("myApp", messages.get(num).getTXT());
+                num++;
             }
         });
     }

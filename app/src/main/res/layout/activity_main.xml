@@ -47,6 +47,7 @@
                 android:layout_height="23dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
+                android:layout_marginTop="4dp"
                 android:layout_toEndOf="@+id/avatar"
                 android:text="Вася Иванов"
                 android:textSize="20dp"
