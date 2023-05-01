@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="msg"
+            type="com.example.start.Message" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="2dp"
+        android:paddingBottom="1dp">
+        <com.daasuu.bl.BubbleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="8dp"
+            app:bl_arrowDirection='@{msg.sender == "left" ? @string/arrow_left : "left"}'
+            app:bl_arrowHeight="8dp"
+            app:bl_arrowPosition="10dp"
+            app:bl_arrowWidth="8dp"
+            app:bl_bubbleColor="@color/primary"
+            app:bl_cornersRadius="8dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4dp"
+                    android:text="BubbleLayout"
+                    android:textColor="@color/primary_light" />
+            </LinearLayout>
+        </com.daasuu.bl.BubbleLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

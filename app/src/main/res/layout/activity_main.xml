@@ -16,13 +16,22 @@
             android:layout_alignParentTop="true"
             android:background="@color/primary"
             android:windowSoftInputMode="adjustResize">
+            <EditText
+                android:id="@+id/authorname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/name"
+                android:hint="Ваше имя"
+                android:inputType="text"
+                tools:ignore="MissingConstraints" />
+
 
             <ImageButton
                 android:id="@+id/btnBackToMenu"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
                 android:background="@color/primary"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +42,6 @@
                 android:id="@+id/avatar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
                 android:layout_toEndOf="@+id/btnBackToMenu"
                 android:background="@drawable/padding"
                 android:scaleType="fitXY"
@@ -45,8 +53,6 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="4dp"
                 android:layout_toEndOf="@+id/avatar"
                 android:text="Вася Иванов"
@@ -64,7 +70,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@color/primary">
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
@@ -127,10 +132,11 @@
             app:layout_constraintTop_toTopOf="@id/avatarLayout">
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="7"
-                android:id="@+id/recyclerView"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:scrollbars="vertical"
+                android:id="@+id/recyclerView" />
         </RelativeLayout>
     </RelativeLayout>
 </layout>
