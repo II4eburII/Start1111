@@ -1,13 +1,16 @@
 package com.example.start;
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
+import com.daasuu.bl.ArrowDirection;
 import com.example.start.databinding.MessageItemBinding;
 
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         }
         public void bind(Message message){
                 binding.setMsg(message);
+                binding.bubbleLayout.setArrowDirection(message.getSenderIsMe()?ArrowDirection.RIGHT:ArrowDirection.LEFT);
         }
     }
     public void addMessage(Message msg){

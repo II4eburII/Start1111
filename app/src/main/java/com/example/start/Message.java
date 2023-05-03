@@ -4,12 +4,12 @@ public class Message {
     private String name;
     private String text;
     private int time;
-    private String sender;
-    public Message(String name, String text, int time, String sender){
+    private boolean senderIsMe;
+    public Message(String name, String text, int time, boolean senderIsMe){
         this.name = name;
         this.text = text;
         this.time = time;
-        this.sender = sender;
+        this.senderIsMe = senderIsMe;
 
     }
     public String getName(){
@@ -21,8 +21,8 @@ public class Message {
     public int getTime(){
         return time;
     }
-    public String getSender(){
-        return sender;
+    public boolean getSenderIsMe(){
+        return senderIsMe;
     }
 }
 
