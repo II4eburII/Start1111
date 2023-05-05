@@ -1,5 +1,6 @@
 package com.example.start;
 import android.app.Application;
+import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +15,10 @@ import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class ViewModel extends AndroidViewModel {
+public class MainActivityViewModel extends AndroidViewModel {
     private final RealmDatabase mDatabase;
     private MessagesAdapter mAdapter;
-    public ViewModel(@NonNull Application application) {
+    public MainActivityViewModel(@NonNull Application application) {
         super(application);
 
         mDatabase = new RealmDatabase(
@@ -30,14 +31,14 @@ public class ViewModel extends AndroidViewModel {
 
         //mDatabase.clear(Operation.class);
     }
-    public MessagesAdapter getAdapter(LifecycleOwner owner, MessagesAdapter listener) {
+    public MessagesAdapter getAdapter() {
         if (mAdapter != null)
             return mAdapter;
 
         mAdapter = new MessagesAdapter(mDatabase.getMessages("sender"));
         return mAdapter;
     }
-    public void addMessage(Message message){
+    public void addMessage_VM(Message message){
         mDatabase.insert(new Message(message));
     }
     public void deleteMessage(Message message){

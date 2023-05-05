@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -22,17 +23,16 @@ import io.realm.RealmResults;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ViewModel viewModel;
+    private MainActivityViewModel viewModel;
     private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        viewModel = new ViewModelProvider(this).get(ViewModel.class);
-        Realm.init(this);
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().name("my").schemaVersion(1).build();
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().name(Realm.DEFAULT_REALM_NAME).schemaVersion(1).build();
         Realm realm = Realm.getInstance(realmConfiguration);
-        Realm.setDefaultConfiguration(realmConfiguration); ;
+        Realm.setDefaultConfiguration(realmConfiguration);
         RealmResults<Message> messages_realm = realm.where(Message.class).findAll();
         OrderedRealmCollection<Message> messages = messages_realm.createSnapshot();
         MessagesAdapter messagesAdapter = new MessagesAdapter(messages);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnSend.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             public void onClick(View v) {
-                viewModel.addMessage(new Message("Марк", binding.message.getText().toString(), 10, binding.authorname.getText().toString().equals("Я")));
+                viewModel.addMessage_VM(new Message("Марк", binding.message.getText().toString(), 10, binding.authorname.getText().toString().equals("Я")));
                 binding.message.setText("");
             }
         });
