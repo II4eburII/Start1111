@@ -20,7 +20,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     private MessagesAdapter mAdapter;
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
-
+        Realm.init(this.getApplication());
         mDatabase = new RealmDatabase(
                 new  RealmConfiguration.Builder().
                         name(Realm.DEFAULT_REALM_NAME).

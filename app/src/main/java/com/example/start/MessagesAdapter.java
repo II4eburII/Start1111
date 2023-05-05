@@ -1,4 +1,4 @@
-package com.example.start;
+/*package com.example.start;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,4 +74,4 @@ public class MessagesAdapter extends RealmRecyclerViewAdapter<Message, MessagesA
     public Message getItem(int position) {
         return messages.get(position);
     }
-}
+}*/
