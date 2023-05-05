@@ -14,11 +14,22 @@ import com.daasuu.bl.ArrowDirection;
 import com.example.start.databinding.MessageItemBinding;
 
 import java.util.ArrayList;
-public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHolder> {
 
-    private ArrayList<Message> messages;
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmConfiguration;
+import io.realm.Realm;
+import io.realm.RealmList;
+import io.realm.RealmModel;
+import io.realm.RealmObject;
+import io.realm.RealmRecyclerViewAdapter;
 
-    MessagesAdapter(ArrayList<Message> messages){
+public class MessagesAdapter extends RealmRecyclerViewAdapter<Message, MessagesAdapter.ViewHolder> {
+
+    private final OrderedRealmCollection<Message> messages;
+    private Message mContextClickOperation;
+
+    MessagesAdapter(OrderedRealmCollection<Message> messages){
+        super(messages, true);
         this.messages = messages;
     }
 
@@ -38,6 +49,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     public int getItemCount() {
         return messages.size();
     }
+
+    public Message getContextClickOperation() {
+        return mContextClickOperation;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final MessageItemBinding binding;
         public ViewHolder(@NonNull MessageItemBinding binding) {
@@ -46,14 +62,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             this.binding = binding;
         }
         public void bind(Message message){
-                binding.setMsg(message);
-                binding.bubbleLayout.setArrowDirection(message.getSenderIsMe()?ArrowDirection.RIGHT:ArrowDirection.LEFT);
+            binding.setMsg(message);
+            binding.bubbleLayout.setArrowDirection(message.getSenderIsMe()?ArrowDirection.RIGHT:ArrowDirection.LEFT);
         }
     }
     public void addMessage(Message msg){
         this.messages.add(msg);
         notifyItemInserted(this.messages.size() - 1);//мы добавили элемент на последнее место, поэтому можно не использовать notifyDataSetChanged, который обновляет весь список
-        //notifyDataSetChanged();
+
     }
     public Message getItem(int position) {
         return messages.get(position);
