@@ -8,18 +8,19 @@ public class Message extends RealmObject {
     private int time;
     private boolean senderIsMe;
     private long id;
-    public Message(){
-
-    }
-    public Message(Message message) {
-        this(message.getName(), message.getText(), message.getTime(), message.getSenderIsMe());
-    }
     public Message(String name, String text, int time, boolean senderIsMe){
         this.name = name;
         this.text = text;
         this.time = time;
         this.senderIsMe = senderIsMe;
         this.id = -1;
+    }
+    public Message(Message message) {
+        this(message.getName(), message.getText(), message.getTime(), message.getSenderIsMe());
+    }
+
+    public Message() {
+
     }
 
 
