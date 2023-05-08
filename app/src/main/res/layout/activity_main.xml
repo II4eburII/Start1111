@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary"
-        tools:context=".MainActivity"
+        tools:context=".ui.main.MainActivity"
         android:id="@+id/mainLayout">
         <!--Avatar layout-->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,9 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:scrollbars="vertical"
-
                     android:hint="Сообщение"
-                    android:inputType="textMultiLine"/>
+                    android:inputType="textMultiLine" />
                 <!--Msg Lt// Add-->
                 <ImageButton
                     android:id="@+id/btnAdd"
@@ -126,7 +125,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/padding"
+            android:background="@drawable/padding_chat_layout"
             android:padding="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

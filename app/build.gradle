@@ -38,6 +38,10 @@ realm {
     syncEnabled = true
 }
 dependencies {
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
     implementation 'io.realm:realm-gradle-plugin:10.11.1'
     implementation 'io.realm:android-adapters:4.0.0'
 
