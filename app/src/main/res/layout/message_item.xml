@@ -22,12 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:padding="2dp"
+            android:padding="1dp"
             app:bl_arrowHeight="8dp"
-            app:bl_arrowPosition="6dp"
+            app:bl_arrowPosition="7dp"
             app:bl_arrowWidth="6dp"
             app:bl_bubbleColor="@color/primary"
-            app:bl_cornersRadius="15dp">
+            app:bl_cornersRadius="16dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,16 +36,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="4dp"
+                    android:paddingLeft="10dp"
                     android:text="@{msg.text}"
                     android:textSize="20dp"
                     android:textColor="@color/primary_light" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="bottom"
                     android:paddingTop="20dp"
-                    android:paddingLeft="15dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+
                     android:text="@{msg.dateTime}"
                     android:textColor="@color/primary_light" />
             </LinearLayout>

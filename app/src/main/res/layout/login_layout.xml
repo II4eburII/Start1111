@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.main.MainActivity">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:id="@+id/emailaddress"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="text"
+        android:id="@+id/emailtext"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="subject"
+        android:id="@+id/emailsubject"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="send"
+        android:id="@+id/emailsendbutton"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="180dp"
+        android:onClick="onClickLogin"/>
+
+
+
+</RelativeLayout>
